@@ -1,0 +1,62 @@
+# === Flutter ===
+build/
+.dart_tool/
+.packages
+.pub/
+.pub-cache/
+.flutter-plugins
+.flutter-plugins-dependencies
+.melos_tool/
+.idea/
+android/.gradle/
+ios/Pods/
+ios/.symlinks/
+macos/Pods/
+macos/.symlinks/
+linux/flutter/ephemeral/
+windows/flutter/ephemeral/
+web/.dart_tool/
+test/.dart_tool/
+coverage/
+*.iml
+
+# === Bun (Node-like) ===
+node_modules/
+bun.lockb
+*.tsbuildinfo
+
+# === OS junk ===
+.DS_Store
+Thumbs.db
+
+# === Logs ===
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+bun-debug.log*
+
+# === Env/Secrets ===
+.env
+.env.*
+
+# === Docker ===
+*.pid
+*.pid.lock
+docker-compose.override.yml
+docker-compose.local.yml
+.docker/
+.dockerignore
+Dockerfile*
+
+# === VSCode ===
+.vscode/
+.history/
+
+# === Others ===
+dist/
+tmp/
+.cache/
+.pnpm-debug.log*
+.sass-cache/
