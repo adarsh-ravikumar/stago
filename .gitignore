@@ -48,7 +48,6 @@ docker-compose.override.yml
 docker-compose.local.yml
 .docker/
 .dockerignore
-Dockerfile*
 
 # === VSCode ===
 .vscode/
