@@ -3,6 +3,6 @@ import { TestQuery } from './controller';
 
 const router = Router();
 
-router.get('/', TestQuery);
+router.get('/get-student/:id', TestQuery);
 
 export default router;
