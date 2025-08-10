@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:student_frontend/Environment/supabase.dart'; // Added to .gitignore, use your own >:(
+import 'package:student_frontend/Environment/supabase_variables.dart'; // Added to .gitignore, use your own >:(
 import 'package:student_frontend/Views/home_page.dart';
 import 'package:student_frontend/Views/login_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
