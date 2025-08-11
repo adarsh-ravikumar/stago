@@ -19,15 +19,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: ColorScheme.dark()),
-      home: SplashPage(context: context),
+      routes: {
+        '/home': (context) => const HomePage(),
+        '/login': (context) => const LoginPage(),
+      },
+      home: const SplashPage(),
     );
   }
 }
 
 // Splash Page to decide which page to show on startup.
 class SplashPage extends StatefulWidget {
-  final BuildContext context;
-  const SplashPage({super.key, required this.context});
+  const SplashPage({super.key});
   @override
   State<SplashPage> createState() => _SplashPageState();
 }
@@ -40,18 +43,15 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Future<void> _redirect() async {
+    await Future.delayed(Duration.zero);
     final session = supabase.auth.currentSession;
 
     if (!mounted) return;
 
     if (session != null) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const HomePage()),
-      );
+      Navigator.of(context).pushReplacementNamed('/home');
     } else {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const LoginPage()),
-      );
+      Navigator.of(context).pushReplacementNamed('/login');
     }
   }
 
