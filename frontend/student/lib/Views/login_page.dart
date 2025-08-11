@@ -1,12 +1,19 @@
 import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
+import "package:student_frontend/Auth/auth.dart";
 import "package:student_frontend/Components/o_auth_card.dart";
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  @override
   Widget build(BuildContext context) {
+    bool signedIn;
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -24,8 +31,15 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 50),
             Center(
               child: TextButton(
-                onPressed: () => {
+                onPressed: () async => {
                   // Navigator pushReplacement Function to Home Page on authentication
+                  signedIn = await signInWithMicrosoft(),
+                  if (mounted && signedIn)
+                    {
+                      Navigator.pushReplacementNamed(context, '/home'),
+                      await Future.delayed(const Duration(seconds: 2)),
+                      if (context.mounted) Navigator.of(context).pop(),
+                    },
                 },
                 child: Padding(
                   padding: EdgeInsetsGeometry.all(16),
