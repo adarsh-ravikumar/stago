@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:student_frontend/Auth/auth.dart';
-import 'package:student_frontend/Environment/supabase_variables.dart'; // Added to .gitignore, use your own >:(
+import 'package:student_frontend/Environment/pb.dart';
 import 'package:student_frontend/Views/home_page.dart';
 import 'package:student_frontend/Views/login_page.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
-  await Supabase.initialize(url: supabase_url, anonKey: supabase_anon_key);
   runApp(MyApp());
 }
-
-// Global Supabase Variable
-final supabase = Supabase.instance.client;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -46,15 +41,16 @@ class _SplashPageState extends State<SplashPage> {
 
   Future<void> _redirect() async {
     await Future.delayed(Duration.zero);
-    final session = supabase.auth.currentSession;
+    final session = pb.authStore.record;
 
     if (!mounted) return;
-
+    debugPrint(session.toString());
     if (session != null) {
       Navigator.of(context).pushReplacementNamed('/home');
-    } else {
-      Navigator.of(context).pushReplacementNamed('/login');
+      return;
     }
+
+    Navigator.of(context).pushReplacementNamed('/login');
   }
 
   @override

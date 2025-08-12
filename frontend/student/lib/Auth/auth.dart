@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uni_links/uni_links.dart';
 
-import '../Services/pb.dart';
+import '../Environment/pb.dart';
 //
 
 // Future<bool> signInWithMicrosoft() async {
@@ -36,7 +36,9 @@ import '../Services/pb.dart';
 Future<bool> signInWithMicrosoft() async {
   await pb.collection('users').authWithOAuth2("microsoft", (url) async {
     await launchUrl(url);
-  },);
+  });
+
+  debugPrint(pb.authStore.toString());
 
   if (!pb.authStore.isValid) {
     debugPrint("Login failed!");
