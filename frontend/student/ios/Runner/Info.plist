@@ -45,5 +45,19 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+	<dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLName</key>
+		<string>com.stago.stagoapp</string> <!-- your bundle ID or any unique string -->
+		<key>CFBundleURLSchemes</key>
+		<array>
+		<string>stago</string>
+		</array>
+	</dict>
+	</array>
+
 </dict>
 </plist>

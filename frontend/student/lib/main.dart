@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:student_frontend/Auth/auth.dart';
 import 'package:student_frontend/Environment/supabase_variables.dart'; // Added to .gitignore, use your own >:(
 import 'package:student_frontend/Views/home_page.dart';
 import 'package:student_frontend/Views/login_page.dart';
@@ -39,6 +40,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    initDeepLinkListener();
     _redirect();
   }
 
